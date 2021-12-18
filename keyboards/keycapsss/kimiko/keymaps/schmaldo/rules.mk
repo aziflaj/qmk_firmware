@@ -1,7 +1,7 @@
-OLED_ENABLE = yes
-OLED_DRIVER = SSD1306   # Enables the use of OLED displays
+OLED_ENABLE = no
+OLED_DRIVER = SSD1306      # Enables the use of OLED displays
 ENCODER_ENABLE = yes       # ENables the use of one or more encoders
-RGBLIGHT_ENABLE = yes      # Enable keyboard RGB underglow
+RGBLIGHT_ENABLE = no       # Enable keyboard RGB underglow
 
 # LTO: Link Time Optimizations.
 # Reduce compiled size, but will automatically disable the legacy TMK Macros and Functions features.
