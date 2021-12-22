@@ -1,6 +1,7 @@
 /* Copyright 2019 Leo Batyuk
  * Copyright 2020 Drashna Jaelre <@drashna>
  * Copyright 2020 @ben_roe (keycapsss.com)
+ * Copyright 2021 Aldo Ziflaj
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,6 +18,8 @@
  */
 
 #include QMK_KEYBOARD_H
+
+#include "schwift.h"
 
 enum layers {
     _QWERTY,
@@ -115,6 +118,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______
   )
 };
+
+/**
+ * Turn SHIFT into my magical SCHWIFT
+ */
+static bool shift_pressed = false;
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (is_shift_reversible(keycode) && record->event.pressed) {
+    if (shift_pressed) {
+      register_code(keycode);
+    } else {
+      register_code16(S(keycode));
+    }
+    return false;
+  }
+
+  switch (keycode) {
+    case KC_LSFT:
+    case KC_RSFT:
+      if (record->event.pressed) {
+        shift_pressed = true;
+      } else {
+        shift_pressed = false;
+      }
+
+      break;
+  }
+
+  return true;
+}
+
 
 
 layer_state_t layer_state_set_user(layer_state_t state) {
