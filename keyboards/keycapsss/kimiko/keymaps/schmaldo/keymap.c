@@ -371,7 +371,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
         switch (get_highest_layer(layer_state)) {
             // If the Default (QWERTY) layer is active
-            case _QWERTY:
+            case _S_QWERTY:
                 // Arrow Up/Down
                 if (clockwise) {
                     tap_code(KC_DOWN);
@@ -393,9 +393,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             case _ADJUST:
                 // RGB brightness up/down
                 if (clockwise) {
-                    rgblight_decrease_val(); // tap_code(RGB_VAD);
+                    /* rgblight_decrease_val(); // tap_code(RGB_VAD); */
                 } else {
-                    rgblight_increase_val(); // tap_code(RGB_VAI);
+                    /* rgblight_increase_val(); // tap_code(RGB_VAI); */
                 }
                 break;
         }
@@ -404,7 +404,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     else if (index == 1) {
         switch (get_highest_layer(layer_state)) {
             // If the Default (QWERTY) layer is active
-            case _QWERTY:
+            case _S_QWERTY:
                 // Scroll by Word
                 if (clockwise) {
                     tap_code16(LCTL(KC_RGHT));
@@ -428,10 +428,10 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 // RGB hue up/down
                 if (clockwise) {
                     // tap_code(RGB_HUI);
-                    rgblight_increase_hue();
+                    /* rgblight_increase_hue(); */
                 } else {
                     // tap_code(RGB_HUD);
-                    rgblight_decrease_hue();
+                    /* rgblight_decrease_hue(); */
                 }
                 break;
         }
