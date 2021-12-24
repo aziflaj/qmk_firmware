@@ -19,76 +19,102 @@
 
 #include QMK_KEYBOARD_H
 
-#include "schwift.h"
-
 enum layers {
-    _QWERTY,
+    _S_QWERTY,
+    _SCHWIFT,
     _LOWER,
     _RAISE,
     _ADJUST,
 };
 
+#define SCHWIFT MO(_SCHWIFT)
 #define RAISE MO(_RAISE)
 #define LOWER MO(_LOWER)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/* QWERTY
+/* S_QWERTY
  * ,--------------------------------------------.                    ,----------------------------------------------.
- * |   ESC   |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  `        |
+ * |   ESC   |   !  |   @  |   #  |   $  |   %  |                    |   ^  |   &  |   *  |   (  |   )  |  _        |
  * |---------+------+------+------+------+------|                    |------+------+------+------+------+-----------|
- * |   Tab   |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |  -        |
+ * |   Tab   |   q  |   w  |   e  |   r  |   t  |                    |   y  |   u  |   i  |   o  |   p  |  =        |
  * |---------+------+------+------+------+------|                    |------+------+------+------+------+-----------|
- * |  LShift |   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  |  '        |
- * |---------+------+------+------+------+------|   [   |    |    ]  |------+------+------+------+------+-----------|
- * |  LCTRL  |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  |RShift/Enter|
+ * | SCHWIFT |   a  |   s  |   d  |   f  |   g  |-------.    ,-------|   h  |   j  |   k  |   l  |   :  |  "        |
+ * |---------+------+------+------+------+------|   \   |    |  ENC  |------+------+------+------+------+-----------|
+ * |    `    |   z  |   x  |   c  |   v  |   b  |-------|    |-------|   n  |   m  |   ,  |   .  |   /  |  SCHWIFT  |
  * `-------------------------------------------|       /     \      \-----------------------------------------------'
- *                 | LCTRL| LGUI | LALT |LOWER| Space /       \Enter \  |RAISE |BackSP| RGUI | RALT |
- *                 `----------------------------------'       '------------------------------------'
+ *                 | LCTRL| LALT | LGUI |LOWER| Space /       \Enter \  RAISE  |  DEL  | RGUI | RALT |
+ *                 `----------------------------------'       '-------------------------------------'
  */
 
- [_QWERTY] = LAYOUT(
-    KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_GRV,
-    KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                        KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
-    KC_LSFT, KC_A,   KC_S,    KC_D,    KC_F,    KC_F,                        KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-    KC_LCTRL, KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,    KC_LBRC,  KC_RBRC,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ENT),
-                      KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,   KC_ENT,   RAISE,   KC_BSPC, KC_RGUI, KC_RALT
+  // TODO: Update for rotary encoder on the right side
+ [_S_QWERTY] = LAYOUT(
+    KC_ESC,  KC_EXLM,  KC_AT,  KC_HASH, KC_DLR, KC_PERC,                       KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS,
+    KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,   KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_EQL,
+    SCHWIFT,  KC_A,    KC_S,    KC_D,    KC_F,   KC_G,                         KC_H,    KC_J,    KC_K,    KC_L,    KC_COLN, KC_DQUO,
+    KC_GRV,   KC_Z,    KC_X,    KC_C,    KC_V,   KC_B,  KC_BSLS,     _______,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SCHWIFT,
+                      KC_LCTL, KC_LALT, KC_LGUI, LOWER,  KC_SPC,     KC_ENT,   RAISE,   KC_BSPC, KC_RGUI, KC_RALT
 ),
+
+
+/* SCHWIFT
+ * ,--------------------------------------------.                    ,----------------------------------------------.
+ * |   ESC   |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  -        |
+ * |---------+------+------+------+------+------|                    |------+------+------+------+------+-----------|
+ * |   Tab   |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |  +        |
+ * |---------+------+------+------+------+------|                    |------+------+------+------+------+-----------|
+ * | SCHWIFT |   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  |  '        |
+ * |---------+------+------+------+------+------|   |   |    |  ENC  |------+------+------+------+------+-----------|
+ * |    ~    |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   <  |   >  |   ?  |  SCHWIFT  |
+ * `-------------------------------------------|       /     \      \-----------------------------------------------'
+ *                 | LCTRL| LALT | LGUI |LOWER| Space /       \Enter \  RAISE  |  DEL  | RGUI | RALT |
+ *                 `----------------------------------'       '-------------------------------------'
+ */
+
+  // TODO: Update for rotary encoder on the right side
+ [_SCHWIFT] = LAYOUT(
+    KC_ESC,    KC_1,     KC_2,     KC_3,     KC_4,     KC_5,                             KC_6,     KC_7,     KC_8,     KC_9,     KC_0,    KC_MINS,
+    KC_TAB,   S(KC_Q),  S(KC_W),  S(KC_E),  S(KC_R),  S(KC_T),                          S(KC_Y),  S(KC_U),  S(KC_I),  S(KC_O),  S(KC_P),  KC_PLUS,
+    SCHWIFT,  S(KC_A),  S(KC_S),  S(KC_D),  S(KC_F),  S(KC_G),                          S(KC_H),  S(KC_J),  S(KC_K),  S(KC_L),  KC_SCLN,  KC_QUOT,
+    KC_TILD,  S(KC_Z),  S(KC_X),  S(KC_C),  S(KC_V),  S(KC_B),  KC_PIPE,      _______,  S(KC_N),  S(KC_M),   KC_LT,    KC_GT,   KC_QUES,  SCHWIFT,
+                        KC_LCTL,  KC_LALT,  KC_LGUI,  LOWER,     KC_SPC,      KC_ENT,   RAISE,    KC_BSPC,  KC_RGUI,  KC_RALT
+),
+
 /* LOWER
  * ,-------------------------------------------.                    ,-----------------------------------------.
  * |        |  F1  |  F2  |  F3  |  F4  |  F5  |                    |  F6  |  F7  |  F8  |  F9  | F10  | F11  |
  * |--------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |        |  1   |  2   |  3   |  4   |  5   |                    |  6   |  7   |  8   |  9   |   0  | F12  |
+ * |        |      |      |      |      |      |                    |      |      |      |  [   |   ]  | F12  |
  * |--------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |   `    |   !  |   @  |   #  |   $  |   %  |-------.    ,-------|   ^  |   &  |   *  |   (  |   )  |   ~  |
+ * |        |      |      |      |      |      |-------.    ,-------|      | LEFT | DOWN |  UP  | RGHT |      |
  * |--------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |        |      |      |      |      |      |-------|    |-------|      |   _  |   +  |   {  |   }  |   \  |
- * `-------------------------------------------|       /     \      \-----------------------------------------------'
- *                 | LCTRL| LGUI | LALT |LOWER| Space /       \Enter \  |RAISE |BackSP| RGUI | RALT |
- *                 `----------------------------------'       '------------------------------------'
+ * |        |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
+ * `-------------------------------------------|       /     \      \-----------------------------------------'
+ *                 | LCTRL| LALT | LGUI |      | Space /       \Enter \         | BACK  | RGUI | RALT |
+ *                 `----------------------------------'       '-------------------------------------'
  */
-
+// TODO: Update layer below with keys above
 [_LOWER] = LAYOUT(
-    _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-    _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_F12,
-    KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_TILD,
-    _______, _______, _______, _______, _______, _______, _______, _______, XXXXXXX, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_BSLS,
-                      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+    _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
+    _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_F12,
+    KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                         KC_CIRC, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_TILD,
+    _______, _______, _______, _______, _______, _______, _______,       _______, XXXXXXX, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_BSLS,
+                      KC_LCTL, KC_LALT, KC_LGUI, _______, KC_SPC,        KC_ENT, _______, KC_DEL, KC_RGUI, KC_RALT
 ),
 /* RAISE
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |   `  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |      |
+ * |      |      |      |      |      |      |                    |      |      |      |   {  |   }  |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |-------.    ,-------|      | Left | Down |  Up  |Right |      |
- * |------+------+------+------+------+------|   [   |    |    ]  |------+------+------+------+------+------|
- * |  F7  |  F8  |  F9  | F10  | F11  | F12  |-------|    |-------|   +  |   -  |   =  |   [  |   ]  |   \  |
+ * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |-------.    ,-------|      | LEFT | DOWN |  UP  | RGHT |      |
+ * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
+ * |  F7  |  F8  |  F9  | F10  | F11  | F12  |-------|    |-------|      |      |      |      |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                 | LCTRL| LGUI | LALT |LOWER| Space /       \Enter \  |RAISE |BackSP| RGUI | RALT |
- *                 `----------------------------------'       '------------------------------------'
+ *                 | LCTRL| LALT | LGUI |LOWER| Space /       \Enter \  |RAISE |  DEL  | RGUI | RALT |
+ *                 `----------------------------------'       '-------------------------------------'
  */
-
+// TODO: Update layer below with keys above
 [_RAISE] = LAYOUT(
     _______, _______, _______, _______, _______, _______,                     _______, _______, _______, _______, _______, _______,
     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
@@ -106,8 +132,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                 |LCTRL| LGUI | LALT |LOWER| Space /       \Enter \  |RAISE |BackSP| RGUI | RALT |
- *                 `----------------------------------'       '------------------------------------'
+ *                 | LCTRL| LALT | LGUI |LOWER| Space /       \Enter \  |RAISE |  DEL  | RGUI | RALT |
+ *                 `----------------------------------'       '-------------------------------------'
  */
 
 [_ADJUST] = LAYOUT(
@@ -118,44 +144,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______
   )
 };
-
-/**
- * Turn SHIFT into my magical SCHWIFT
- */
-static bool shift_pressed = false;
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (is_shift_reversible(keycode) && record->event.pressed) {
-    if (shift_pressed) {
-      unregister_code(KC_LSFT);
-      unregister_code(KC_RSFT);
-      register_code(keycode);
-    } else {
-      register_code16(S(keycode));
-    }
-    return false;
-  }
-
-  // if one of the SHIFT keys is pressed, set the shift_pressed flag
-  switch (keycode) {
-    case KC_LSFT:
-    case KC_RSFT:
-      if (record->event.pressed) {
-        shift_pressed = true;
-        oled_clear();
-        oled_write("schwift", false);
-      } else {
-        shift_pressed = false;
-        oled_clear();
-        oled_write("normal", false);
-      }
-
-      return false;
-  }
-
-  return true;
-}
-
 
 
 layer_state_t layer_state_set_user(layer_state_t state) {
@@ -375,12 +363,15 @@ bool oled_task_user(void) {
 
 
 #ifdef ENCODER_ENABLE
+// TODO: Program encoder, right-side only
+// In _S_QWERTY, do page up/down
+// IN _S_LOWER, do volume up/down
 bool encoder_update_user(uint8_t index, bool clockwise) {
     // Encoder on master side
     if (index == 0) {
         switch (get_highest_layer(layer_state)) {
             // If the Default (QWERTY) layer is active
-            case _QWERTY:
+            case _S_QWERTY:
                 // Arrow Up/Down
                 if (clockwise) {
                     tap_code(KC_DOWN);
@@ -402,9 +393,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             case _ADJUST:
                 // RGB brightness up/down
                 if (clockwise) {
-                    rgblight_decrease_val(); // tap_code(RGB_VAD);
+                    /* rgblight_decrease_val(); // tap_code(RGB_VAD); */
                 } else {
-                    rgblight_increase_val(); // tap_code(RGB_VAI);
+                    /* rgblight_increase_val(); // tap_code(RGB_VAI); */
                 }
                 break;
         }
@@ -413,7 +404,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     else if (index == 1) {
         switch (get_highest_layer(layer_state)) {
             // If the Default (QWERTY) layer is active
-            case _QWERTY:
+            case _S_QWERTY:
                 // Scroll by Word
                 if (clockwise) {
                     tap_code16(LCTL(KC_RGHT));
@@ -437,10 +428,10 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 // RGB hue up/down
                 if (clockwise) {
                     // tap_code(RGB_HUI);
-                    rgblight_increase_hue();
+                    /* rgblight_increase_hue(); */
                 } else {
                     // tap_code(RGB_HUD);
-                    rgblight_decrease_hue();
+                    /* rgblight_decrease_hue(); */
                 }
                 break;
         }
