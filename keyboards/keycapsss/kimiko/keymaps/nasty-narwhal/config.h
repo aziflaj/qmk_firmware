@@ -26,6 +26,7 @@
 // #define OLED_FONT_WIDTH 5
 // #define OLED_FONT_HEIGHT 7
 
+#define TAPPING_TERM 150
 #ifdef RGBLIGHT_ENABLE
 #   define RGBLIGHT_HUE_STEP 8
 #   define RGBLIGHT_SAT_STEP 8

@@ -47,13 +47,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                 `----------------------------------'       '-------------------------------------'
  */
 
-  // TODO: Update for rotary encoder on the right side
  [_S_QWERTY] = LAYOUT(
-    KC_ESC,  KC_EXLM,  KC_AT,  KC_HASH, KC_DLR, KC_PERC,                       KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS,
-    KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,   KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_EQL,
-    SCHWIFT,  KC_A,    KC_S,    KC_D,    KC_F,   KC_G,                         KC_H,    KC_J,    KC_K,    KC_L,    KC_COLN, KC_DQUO,
-    KC_GRV,   KC_Z,    KC_X,    KC_C,    KC_V,   KC_B,  KC_BSLS,     _______,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SCHWIFT,
-                      KC_LCTL, KC_LALT, KC_LGUI, LOWER,  KC_SPC,     KC_ENT,   RAISE,   KC_BSPC, KC_RGUI, KC_RALT
+    KC_ESC,  KC_EXLM,  KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                       KC_CIRC, KC_AMPR,   KC_ASTR,  KC_LPRN,   KC_RPRN,   KC_UNDS,
+    KC_TAB,   KC_Q,    KC_W,     KC_E,    KC_R,     KC_T,                         KC_Y,    KC_U,      KC_I,     KC_O,       KC_P,    KC_EQL,
+    SCHWIFT,  KC_A, KC_S, KC_D, CTL_T(KC_F), KC_G,                         KC_H, CTL_T(KC_J),  KC_K,   KC_L, KC_COLN,  KC_DQUO,
+    KC_GRV,   KC_Z,    KC_X,     KC_C,    KC_V,     KC_B,  KC_BSLS,     XXXXXXX,  KC_N,    KC_M,     KC_COMM,   KC_DOT,    KC_SLSH,  SCHWIFT,
+                      KC_LCTL,  KC_LALT, KC_LGUI,   LOWER,  KC_SPC,     KC_ENT,   RAISE,   KC_BSPC,  KC_RGUI,   KC_RALT
 ),
 
 
@@ -71,12 +70,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                 `----------------------------------'       '-------------------------------------'
  */
 
-  // TODO: Update for rotary encoder on the right side
  [_SCHWIFT] = LAYOUT(
     KC_ESC,    KC_1,     KC_2,     KC_3,     KC_4,     KC_5,                             KC_6,     KC_7,     KC_8,     KC_9,     KC_0,    KC_MINS,
     KC_TAB,   S(KC_Q),  S(KC_W),  S(KC_E),  S(KC_R),  S(KC_T),                          S(KC_Y),  S(KC_U),  S(KC_I),  S(KC_O),  S(KC_P),  KC_PLUS,
-    SCHWIFT,  S(KC_A),  S(KC_S),  S(KC_D),  S(KC_F),  S(KC_G),                          S(KC_H),  S(KC_J),  S(KC_K),  S(KC_L),  KC_SCLN,  KC_QUOT,
-    KC_TILD,  S(KC_Z),  S(KC_X),  S(KC_C),  S(KC_V),  S(KC_B),  KC_PIPE,      _______,  S(KC_N),  S(KC_M),   KC_LT,    KC_GT,   KC_QUES,  SCHWIFT,
+    XXXXXXX,  S(KC_A),  S(KC_S),  S(KC_D),  S(KC_F),  S(KC_G),                          S(KC_H),  S(KC_J),  S(KC_K),  S(KC_L),  KC_SCLN,  KC_QUOT,
+    KC_TILD,  S(KC_Z),  S(KC_X),  S(KC_C),  S(KC_V),  S(KC_B),  KC_PIPE,      _______,  S(KC_N),  S(KC_M),   KC_LT,    KC_GT,   KC_QUES,  XXXXXXX,
                         KC_LCTL,  KC_LALT,  KC_LGUI,  LOWER,     KC_SPC,      KC_ENT,   RAISE,    KC_BSPC,  KC_RGUI,  KC_RALT
 ),
 
@@ -86,18 +84,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |        |      |      |      |      |      |                    |      |      |      |  [   |   ]  | F12  |
  * |--------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |        |      |      |      |      |      |-------.    ,-------|      | LEFT | DOWN |  UP  | RGHT |      |
+ * |        |      |      |      |      |      |-------.    ,-------| LEFT | DOWN |  UP  | RGHT |      |      |
  * |--------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |        |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
  * `-------------------------------------------|       /     \      \-----------------------------------------'
  *                 | LCTRL| LALT | LGUI |      | Space /       \Enter \         | BACK  | RGUI | RALT |
  *                 `----------------------------------'       '-------------------------------------'
  */
-// TODO: Update layer below with keys above
 [_LOWER] = LAYOUT(
-    _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-    _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_F12,
-    KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                         KC_CIRC, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_TILD,
+    _______,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                          KC_F6,   KC_F7,   KC_F8,  KC_F9,   KC_F10,  KC_F11,
+    _______, _______, _______, _______, _______, _______,                        _______, _______, _______, KC_LCBR, KC_RCBR, KC_F12,
+    _______, _______, _______, _______, _______, _______,                         KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,  _______, _______,
     _______, _______, _______, _______, _______, _______, _______,       _______, XXXXXXX, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_BSLS,
                       KC_LCTL, KC_LALT, KC_LGUI, _______, KC_SPC,        KC_ENT, _______, KC_DEL, KC_RGUI, KC_RALT
 ),
@@ -107,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |      |      |      |      |      |                    |      |      |      |   {  |   }  |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |-------.    ,-------|      | LEFT | DOWN |  UP  | RGHT |      |
+ * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |-------.    ,-------| LEFT | DOWN |  UP  | RGHT |      |      |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |  F7  |  F8  |  F9  | F10  | F11  | F12  |-------|    |-------|      |      |      |      |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -116,11 +113,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 // TODO: Update layer below with keys above
 [_RAISE] = LAYOUT(
-    _______, _______, _______, _______, _______, _______,                     _______, _______, _______, _______, _______, _______,
-    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
-    KC_F1,  KC_F2,    KC_F3,   KC_F4,   KC_F5,   KC_F6,                       XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX,
-    KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,   _______, _______,  KC_PLUS, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
-                      _______, _______, _______, _______,  _______, _______,  _______, _______, _______, _______
+    _______, _______, _______, _______, _______, _______,                          _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______,                          _______, _______, _______, KC_LBRC, KC_RBRC, _______,
+    KC_F1,  KC_F2,    KC_F3,   KC_F4,   KC_F5,   KC_F6,                            KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX,
+    KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,   _______,      XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX,
+                      KC_LCTL, KC_LALT, KC_LGUI, _______, KC_SPC,        KC_ENT, _______, KC_DEL, KC_RGUI, KC_RALT
 ),
 /* ADJUST (Press LOWER and RAISE together)
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -301,7 +298,7 @@ void render_logo(void) {
         0xA0, 0xA1, 0xA2, 0xA3, 0xA4,
         0xC0, 0xC1, 0xC2, 0xC3, 0xC4, 0};
     oled_write_P(corne_logo, false);
-    // oled_write_P(PSTR("Kimiko"), false);
+    /* oled_write_P(PSTR("Kimiko"), false); */
 }
 
 void render_layer_state(void) {
@@ -363,79 +360,31 @@ bool oled_task_user(void) {
 
 
 #ifdef ENCODER_ENABLE
-// TODO: Program encoder, right-side only
 // In _S_QWERTY, do page up/down
-// IN _S_LOWER, do volume up/down
+// IN _LOWER, do volume up/down
 bool encoder_update_user(uint8_t index, bool clockwise) {
-    // Encoder on master side
-    if (index == 0) {
-        switch (get_highest_layer(layer_state)) {
-            // If the Default (QWERTY) layer is active
-            case _S_QWERTY:
-                // Arrow Up/Down
-                if (clockwise) {
-                    tap_code(KC_DOWN);
-                } else {
-                    tap_code(KC_UP);
-                }
-                break;
+  // Only encoder we have is on the right (slave) side
+  if (index != 1) {
+    return false;
+  }
 
-            // If the RAISE layer is active
-            case _RAISE:
-                // Switch browser tabs
-                if (clockwise) {
-                    tap_code16(LCTL(KC_TAB));
-                } else {
-                    tap_code16(RCS(KC_TAB));
-                }
-                break;
-            // If the ADJUST layer is active
-            case _ADJUST:
-                // RGB brightness up/down
-                if (clockwise) {
-                    /* rgblight_decrease_val(); // tap_code(RGB_VAD); */
-                } else {
-                    /* rgblight_increase_val(); // tap_code(RGB_VAI); */
-                }
-                break;
-        }
-    }
-    // Encoder on slave side
-    else if (index == 1) {
-        switch (get_highest_layer(layer_state)) {
-            // If the Default (QWERTY) layer is active
-            case _S_QWERTY:
-                // Scroll by Word
-                if (clockwise) {
-                    tap_code16(LCTL(KC_RGHT));
-                } else {
-                    tap_code16(LCTL(KC_LEFT));
-                }
-                break;
+  switch(get_highest_layer(layer_state)) {
+    case _S_QWERTY:
+      if (clockwise) {
+        tap_code(KC_PGDN);
+      } else {
+        tap_code(KC_PGUP);
+      }
+      return true;
 
-            // If the LOWER layer is active
-            case _LOWER:
-                // Volume up/down
-                if (clockwise) {
-                    tap_code(KC_VOLU);
-                } else {
-                    tap_code(KC_VOLD);
-                }
-                break;
-
-            // If the ADJUST layer is active
-            case _ADJUST:
-                // RGB hue up/down
-                if (clockwise) {
-                    // tap_code(RGB_HUI);
-                    /* rgblight_increase_hue(); */
-                } else {
-                    // tap_code(RGB_HUD);
-                    /* rgblight_decrease_hue(); */
-                }
-                break;
-        }
-    }
-    return true;
+    case _LOWER:
+      if (clockwise) {
+        tap_code(KC_VOLU);
+      } else {
+        tap_code(KC_VOLD);
+      }
+      return true;
+  }
+  return false;
 }
 #endif // ENCODER_ENABLE
