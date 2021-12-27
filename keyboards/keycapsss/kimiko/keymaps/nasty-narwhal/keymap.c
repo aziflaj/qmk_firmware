@@ -371,9 +371,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
   switch(get_highest_layer(layer_state)) {
     case _S_QWERTY:
       if (clockwise) {
-        tap_code(KC_PGDN);
+        tap_code(KC_WH_U);
       } else {
-        tap_code(KC_PGUP);
+        tap_code(KC_WH_D);
       }
       return true;
 
@@ -385,6 +385,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
       }
       return true;
   }
+
   return false;
 }
 #endif // ENCODER_ENABLE
