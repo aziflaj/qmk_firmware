@@ -35,47 +35,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* S_QWERTY
  * ,--------------------------------------------.                    ,----------------------------------------------.
- * |   ESC   |   !  |   @  |   #  |   $  |   %  |                    |   ^  |   &  |   *  |   (  |   )  |  _        |
+ * |   Tab   |   !  |   @  |   #  |   $  |   %  |                    |   ^  |   &  |   *  |   (  |   )  |  _        |
  * |---------+------+------+------+------+------|                    |------+------+------+------+------+-----------|
- * |   Tab   |   q  |   w  |   e  |   r  |   t  |                    |   y  |   u  |   i  |   o  |   p  |  =        |
+ * |   ESC   |   q  |   w  |   e  |   r  |   t  |                    |   y  |   u  |   i  |   o  |   p  |  =        |
  * |---------+------+------+------+------+------|                    |------+------+------+------+------+-----------|
  * | SCHWIFT |   a  |   s  |   d  |   f  |   g  |-------.    ,-------|   h  |   j  |   k  |   l  |   :  |  "        |
- * |---------+------+------+------+------+------|   \   |    |  ENC  |------+------+------+------+------+-----------|
- * |    `    |   z  |   x  |   c  |   v  |   b  |-------|    |-------|   n  |   m  |   ,  |   .  |   /  |  SCHWIFT  |
+ * |---------+------+------+------+------+------|   `   |    |  ENC  |------+------+------+------+------+-----------|
+ * |  LCTRL  |   z  |   x  |   c  |   v  |   b  |-------|    |-------|   n  |   m  |   ,  |   .  |   /  |  SCHWIFT  |
  * `-------------------------------------------|       /     \      \-----------------------------------------------'
- *                 | LCTRL| LALT | LGUI |LOWER| Space /       \Enter \  RAISE  |  DEL  | RGUI | RALT |
+ *                 |   \  | LALT | LGUI |LOWER| Space /       \Enter \  RAISE  |  DEL  | RGUI | RALT |
  *                 `----------------------------------'       '-------------------------------------'
  */
 
  [_S_QWERTY] = LAYOUT(
-    KC_ESC,  KC_EXLM,  KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                       KC_CIRC, KC_AMPR,   KC_ASTR,  KC_LPRN,   KC_RPRN,   KC_UNDS,
-    KC_TAB,   KC_Q,    KC_W,     KC_E,    KC_R,     KC_T,                         KC_Y,    KC_U,      KC_I,     KC_O,       KC_P,    KC_EQL,
-    SCHWIFT,  KC_A, KC_S, KC_D, CTL_T(KC_F), KC_G,                         KC_H, CTL_T(KC_J),  KC_K,   KC_L, KC_COLN,  KC_DQUO,
-    KC_GRV,   KC_Z,    KC_X,     KC_C,    KC_V,     KC_B,  KC_BSLS,     XXXXXXX,  KC_N,    KC_M,     KC_COMM,   KC_DOT,    KC_SLSH,  SCHWIFT,
-                      KC_LCTL,  KC_LALT, KC_LGUI,   LOWER,  KC_SPC,     KC_ENT,   RAISE,   KC_BSPC,  KC_RGUI,   KC_RALT
-),
-
-
-/* SCHWIFT
- * ,--------------------------------------------.                    ,----------------------------------------------.
- * |   ESC   |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  -        |
- * |---------+------+------+------+------+------|                    |------+------+------+------+------+-----------|
- * |   Tab   |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |  +        |
- * |---------+------+------+------+------+------|                    |------+------+------+------+------+-----------|
- * | SCHWIFT |   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  |  '        |
- * |---------+------+------+------+------+------|   |   |    |  ENC  |------+------+------+------+------+-----------|
- * |    ~    |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   <  |   >  |   ?  |  SCHWIFT  |
- * `-------------------------------------------|       /     \      \-----------------------------------------------'
- *                 | LCTRL| LALT | LGUI |LOWER| Space /       \Enter \  RAISE  |  DEL  | RGUI | RALT |
- *                 `----------------------------------'       '-------------------------------------'
- */
-
- [_SCHWIFT] = LAYOUT(
-    KC_ESC,    KC_1,     KC_2,     KC_3,     KC_4,     KC_5,                             KC_6,     KC_7,     KC_8,     KC_9,     KC_0,    KC_MINS,
-    KC_TAB,   S(KC_Q),  S(KC_W),  S(KC_E),  S(KC_R),  S(KC_T),                          S(KC_Y),  S(KC_U),  S(KC_I),  S(KC_O),  S(KC_P),  KC_PLUS,
-    XXXXXXX,  S(KC_A),  S(KC_S),  S(KC_D),  S(KC_F),  S(KC_G),                          S(KC_H),  S(KC_J),  S(KC_K),  S(KC_L),  KC_SCLN,  KC_QUOT,
-    KC_TILD,  S(KC_Z),  S(KC_X),  S(KC_C),  S(KC_V),  S(KC_B),  KC_PIPE,      _______,  S(KC_N),  S(KC_M),   KC_LT,    KC_GT,   KC_QUES,  XXXXXXX,
-                        KC_LCTL,  KC_LALT,  KC_LGUI,  LOWER,     KC_SPC,      KC_ENT,   RAISE,    KC_BSPC,  KC_RGUI,  KC_RALT
+    KC_TAB,   KC_1, KC_2, KC_3,    KC_4,     KC_5,                        KC_6,    KC_7,      KC_8,   KC_9,    KC_0,   KC_UNDS,
+    KC_ESC,   KC_Q, KC_W, KC_E,    KC_R,     KC_T,                        KC_Y,    KC_U,      KC_I,   KC_O,    KC_P,    KC_EQL,
+    KC_LSFT,  CMD_T(KC_A), KC_S, KC_D, CTL_T(KC_F), KC_G,                 KC_H, CTL_T(KC_J),  KC_K,   KC_L,   KC_COLN,  KC_DQUO,
+    KC_LCTL,  KC_Z, KC_X, KC_C,    KC_V,     KC_B,  KC_GRV,     XXXXXXX,  KC_N,    KC_M,     KC_COMM, KC_DOT, KC_SLSH,  KC_RSFT,
+              KC_BSLS,  KC_LALT, KC_LGUI,   LOWER,  KC_SPC,     KC_ENT,   RAISE,   KC_BSPC,  KC_RGUI, KC_RALT
 ),
 
 /* LOWER
@@ -95,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                          KC_F6,   KC_F7,   KC_F8,  KC_F9,   KC_F10,  KC_F11,
     _______, _______, _______, _______, _______, _______,                        _______, _______, _______, KC_LCBR, KC_RCBR, KC_F12,
     _______, _______, _______, _______, _______, _______,                         KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,  _______, _______,
-    _______, _______, _______, _______, _______, _______, _______,       _______, XXXXXXX, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_BSLS,
+    _______, _______, _______, _______, _______, _______, _______,       _______, XXXXXXX, XXXXXXX, KC_LCBR, KC_RCBR, XXXXXXX, XXXXXXX,
                       KC_LCTL, KC_LALT, KC_LGUI, _______, KC_SPC,        KC_ENT, _______, KC_DEL, KC_RGUI, KC_RALT
 ),
 /* RAISE
@@ -135,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_ADJUST] = LAYOUT(
     RESET,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                   KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    XXXXXXX,
     RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                   KC_VOLU, KC_MUTE, KC_VOLD, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                       _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______
@@ -370,19 +347,11 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 
   switch(get_highest_layer(layer_state)) {
     case _S_QWERTY:
-      if (clockwise) {
-        tap_code(KC_WH_U);
-      } else {
-        tap_code(KC_WH_D);
-      }
+      tap_code(clockwise ? KC_WH_U : KC_WH_D);
       return true;
 
     case _LOWER:
-      if (clockwise) {
-        tap_code(KC_VOLU);
-      } else {
-        tap_code(KC_VOLD);
-      }
+      tap_code(clockwise ? KC_VOLU : KC_VOLD);
       return true;
   }
 
